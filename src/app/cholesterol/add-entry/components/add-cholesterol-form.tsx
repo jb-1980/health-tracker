@@ -3,6 +3,8 @@ import { Button, Stack, TextField, Typography } from "@mui/material"
 import { useActionState } from "react"
 import { addCholesterol } from "../action"
 import { useRouter } from "next/navigation"
+import { DateTimePicker } from "@/components/DateTimePicker"
+import dayjs from "dayjs"
 
 export const AddCholesterolForm = (props: { userId: string }) => {
   const router = useRouter()
@@ -21,6 +23,11 @@ export const AddCholesterolForm = (props: { userId: string }) => {
             {error}
           </Typography>
         )}
+        <DateTimePicker
+          name="datetime"
+          label="Measured on"
+          defaultValue={dayjs()}
+        />
         <TextField
           label="Total Cholesterol"
           placeholder="0"

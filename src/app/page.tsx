@@ -1,7 +1,13 @@
+import { verifySession } from "@/auth/verify-session"
+import { Navigate } from "@/components/navigate"
 import { Button, Stack } from "@mui/material"
 import Link from "next/link"
 
-export default function Home() {
+export default async function Home() {
+  const session = await verifySession()
+  if (!session.isAuth) {
+    return <Navigate to="/login" />
+  }
   return (
     <Stack
       alignItems="center"
