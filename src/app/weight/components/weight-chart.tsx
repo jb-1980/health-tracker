@@ -1,4 +1,5 @@
 "use client"
+import { AspectRatioBox } from "@/components/AspectRatioBox"
 import { MetricDTO, MetricName } from "@/definitions/metrics"
 import { LineChart } from "@mui/x-charts/LineChart"
 
@@ -10,7 +11,7 @@ export const WeightChart = (props: {
     weight: d.value,
   }))
   return (
-    <div style={{ width: "100%" }}>
+    <AspectRatioBox ratio={16 / 9}>
       <LineChart
         dataset={data.map((d) => ({
           ...d,
@@ -25,6 +26,6 @@ export const WeightChart = (props: {
           },
         ]}
       />
-    </div>
+    </AspectRatioBox>
   )
 }

@@ -1,4 +1,5 @@
 "use client"
+import { AspectRatioBox } from "@/components/AspectRatioBox"
 import { MetricDTO, MetricName } from "@/definitions/metrics"
 import { LineChart } from "@mui/x-charts/LineChart"
 
@@ -12,7 +13,7 @@ export const CholesterolChart = (props: {
     ldl: d.value.ldl,
   }))
   return (
-    <div style={{ width: "100%" }}>
+    <AspectRatioBox ratio={16 / 9}>
       <LineChart
         dataset={data.map((d) => ({
           ...d,
@@ -31,6 +32,6 @@ export const CholesterolChart = (props: {
           },
         ]}
       />
-    </div>
+    </AspectRatioBox>
   )
 }

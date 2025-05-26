@@ -1,4 +1,5 @@
 "use client"
+import { AspectRatioBox } from "@/components/AspectRatioBox"
 import { MetricDTO, MetricName } from "@/definitions/metrics"
 import { LineChart } from "@mui/x-charts/LineChart"
 
@@ -11,7 +12,7 @@ export const BPChart = (props: {
     systolic: d.value.systolic,
   }))
   return (
-    <div style={{ width: "100%" }}>
+    <AspectRatioBox ratio={16 / 9}>
       <LineChart
         dataset={data.map((d) => ({
           ...d,
@@ -29,6 +30,6 @@ export const BPChart = (props: {
           },
         ]}
       />
-    </div>
+    </AspectRatioBox>
   )
 }
