@@ -14,7 +14,8 @@ export const addCholesterol = async (
   formData: FormData
 ): Promise<AddCholesterolState> => {
   const validatedFields = AddCholesterolFormSchema.safeParse({
-    total: formData.get("total"),
+    userId: state.userId,
+    total: formData.get("totalCholesterol"),
     hdl: formData.get("hdl"),
     triglycerides: formData.get("triglycerides"),
     datetime: formData.get("datetime"),

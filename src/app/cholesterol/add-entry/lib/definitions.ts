@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb"
 import z from "zod"
 
 export type AddCholesterolState = {
@@ -6,10 +7,12 @@ export type AddCholesterolState = {
 }
 
 export const AddCholesterolFormSchema = z.object({
-  userId: z.string().uuid(),
-  total: z.number().min(0),
-  hdl: z.number().min(0),
-  triglycerides: z.number().min(0),
+  userId: z.string().refine((id) => ObjectId.isValid(id), {
+    message: "Invalid user ID",
+  }),
+  total: z.coerce.number().min(0),
+  hdl: z.coerce.number().min(0),
+  triglycerides: z.coerce.number().min(0),
   datetime: z.string().refine((date) => !isNaN(Date.parse(date)), {
     message: "Invalid date",
   }),
