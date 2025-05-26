@@ -2,6 +2,7 @@
 import { useActionState } from "react"
 import { register } from "./action"
 import { Button, Paper, Stack, TextField, Typography } from "@mui/material"
+import Link from "next/link"
 
 export default function Register() {
   const paperStyle = {
@@ -15,8 +16,7 @@ export default function Register() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
-        minWidth: "100vw",
+        minHeight: "calc(100vh - 56px - 32px)", // full-height - header - padding,
       }}
     >
       <Paper elevation={10} style={paperStyle}>
@@ -48,6 +48,12 @@ export default function Register() {
             <Button type="submit" disabled={pending} variant="contained">
               {pending ? "Registering..." : "Register"}
             </Button>
+            <div>
+              Already have an account?{" "}
+              <Link className="text-blue-500" href="/login">
+                Login
+              </Link>
+            </div>
           </Stack>
         </form>
       </Paper>

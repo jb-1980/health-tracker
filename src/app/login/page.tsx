@@ -12,8 +12,7 @@ export default function Login() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        minHeight: "100vh",
-        minWidth: "100vw",
+        minHeight: "calc(100vh - 56px - 32px)", // full-height - header - padding,
       }}
     >
       <Paper
@@ -23,10 +22,11 @@ export default function Login() {
           maxWidth: 300,
         }}
       >
-        <form action={action}>
+        <form action={action} className="flex flex-col gap-4">
           {state?.message && (
             <div style={{ color: "red" }}>{state.message}</div>
           )}
+
           <TextField name="username" label="Username" />
           <TextField
             name="password"
