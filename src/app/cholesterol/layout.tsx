@@ -37,9 +37,7 @@ export default async function Cholesterol({
   return (
     <div>
       <Stack direction="column" justifyContent="center" style={{ gap: "2px" }}>
-        <div style={{ margin: "0 auto" }}>
-          <CholesterolChart data={cholesterolMetrics} />
-        </div>
+        <CholesterolChart data={cholesterolMetrics} />
         <CholesterolAddButton />
         <CholesterolDataDisplay data={cholesterolMetrics} />
       </Stack>

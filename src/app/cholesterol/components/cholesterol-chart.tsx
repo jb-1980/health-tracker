@@ -12,25 +12,25 @@ export const CholesterolChart = (props: {
     ldl: d.value.ldl,
   }))
   return (
-    <LineChart
-      width={500}
-      height={300}
-      dataset={data.map((d) => ({
-        ...d,
-        date: new Date(d.date),
-      }))}
-      series={[
-        { dataKey: "total", label: "Total Cholesterol" },
-        { dataKey: "hdl", label: "HDL" },
-        { dataKey: "ldl", label: "LDL" },
-      ]}
-      xAxis={[
-        {
-          dataKey: "date",
-          scaleType: "time",
-          valueFormatter: (date) => date.toLocaleDateString(),
-        },
-      ]}
-    />
+    <div style={{ width: "100%" }}>
+      <LineChart
+        dataset={data.map((d) => ({
+          ...d,
+          date: new Date(d.date),
+        }))}
+        series={[
+          { dataKey: "total", label: "Total Cholesterol" },
+          { dataKey: "hdl", label: "HDL" },
+          { dataKey: "ldl", label: "LDL" },
+        ]}
+        xAxis={[
+          {
+            dataKey: "date",
+            scaleType: "time",
+            valueFormatter: (date) => date.toLocaleDateString(),
+          },
+        ]}
+      />
+    </div>
   )
 }

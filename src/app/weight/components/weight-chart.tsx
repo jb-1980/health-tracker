@@ -2,13 +2,12 @@
 import { MetricDTO, MetricName } from "@/definitions/metrics"
 import { LineChart } from "@mui/x-charts/LineChart"
 
-export const BPChart = (props: {
-  data: MetricDTO<MetricName.BLOOD_PRESSURE>[]
+export const WeightChart = (props: {
+  data: MetricDTO<MetricName.WEIGHT>[]
 }) => {
   const data = props.data.map((d) => ({
     date: d.date,
-    diastolic: d.value.diastolic,
-    systolic: d.value.systolic,
+    weight: d.value,
   }))
   return (
     <div style={{ width: "100%" }}>
@@ -17,10 +16,7 @@ export const BPChart = (props: {
           ...d,
           date: new Date(d.date),
         }))}
-        series={[
-          { dataKey: "diastolic", label: "DIA" },
-          { dataKey: "systolic", label: "SYS" },
-        ]}
+        series={[{ dataKey: "weight", label: "Weight (lbs)" }]}
         xAxis={[
           {
             dataKey: "date",

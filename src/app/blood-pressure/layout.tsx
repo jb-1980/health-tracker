@@ -37,9 +37,7 @@ export default async function BloodPressure({
   return (
     <div>
       <Stack direction="column" justifyContent="center" style={{ gap: "2px" }}>
-        <div style={{ margin: "0 auto" }}>
-          <BPChart data={bloodPressureMetrics} />
-        </div>
+        <BPChart data={bloodPressureMetrics} />
         <AddBPButton />
         <BPDataDisplay data={bloodPressureMetrics} />
       </Stack>

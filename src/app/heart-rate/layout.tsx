@@ -37,9 +37,7 @@ export default async function HeartRate({
   return (
     <div>
       <Stack direction="column" justifyContent="center" style={{ gap: "2px" }}>
-        <div style={{ margin: "0 auto" }}>
-          <HeartRateChart data={heartRateMetrics} />
-        </div>
+        <HeartRateChart data={heartRateMetrics} />
         <HeartRateAddButton />
         <HRDataDisplay data={heartRateMetrics} />
       </Stack>

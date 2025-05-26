@@ -11,27 +11,23 @@ import { formattedDate } from "../../../lib/dates"
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever"
 import { MetricDTO, MetricName } from "@/definitions/metrics"
 import { useActionState } from "react"
-import { deleteCholesterol } from "../action"
+import { deleteWeight } from "../action"
 
-export const CholesterolDataDisplay = (props: {
-  data: MetricDTO<MetricName.CHOLESTEROL>[]
+export const WeightDataDisplay = (props: {
+  data: MetricDTO<MetricName.WEIGHT>[]
 }) => {
   const data = props.data.map((d) => ({
     id: d.id,
     date: d.date,
-    total: d.value.total,
-    hdl: d.value.hdl,
-    ldl: d.value.ldl,
+    weight: d.value,
   }))
 
   return (
-    <Table style={{ width: "100%" }}>
+    <Table>
       <TableHead>
         <TableRow>
           <TableCell>Date</TableCell>
-          <TableCell>Total Cholesterol</TableCell>
-          <TableCell>HDL</TableCell>
-          <TableCell>LDL</TableCell>
+          <TableCell>Weight (lbs)</TableCell>
           <TableCell></TableCell>
         </TableRow>
       </TableHead>
@@ -39,9 +35,7 @@ export const CholesterolDataDisplay = (props: {
         {data.map((entry) => (
           <TableRow key={entry.id}>
             <TableCell>{formattedDate(entry.date)}</TableCell>
-            <TableCell>{entry.total} mg/dL</TableCell>
-            <TableCell>{entry.hdl} mg/dL</TableCell>
-            <TableCell>{entry.ldl} mg/dL</TableCell>
+            <TableCell>{entry.weight} lbs</TableCell>
             <TableCell>
               <DeleteMetricControl id={entry.id} />
             </TableCell>
@@ -53,11 +47,11 @@ export const CholesterolDataDisplay = (props: {
 }
 
 const DeleteMetricControl = (props: { id: string }) => {
-  const [, action, pending] = useActionState(deleteCholesterol, null)
+  const [, action, pending] = useActionState(deleteWeight, null)
 
   return (
     <form action={action}>
-      <input type="hidden" name="cholesterolId" value={props.id} />
+      <input type="hidden" name="heartRateId" value={props.id} />
       <IconButton type="submit" size="small" disabled={pending}>
         <DeleteForeverIcon />
       </IconButton>

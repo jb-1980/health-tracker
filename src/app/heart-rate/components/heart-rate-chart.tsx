@@ -10,21 +10,21 @@ export const HeartRateChart = (props: {
     heartRate: d.value,
   }))
   return (
-    <LineChart
-      width={500}
-      height={300}
-      dataset={data.map((d) => ({
-        ...d,
-        date: new Date(d.date),
-      }))}
-      series={[{ dataKey: "heartRate", label: "Heart Rate" }]}
-      xAxis={[
-        {
-          dataKey: "date",
-          scaleType: "time",
-          valueFormatter: (date) => date.toLocaleDateString(),
-        },
-      ]}
-    />
+    <div style={{ width: "100%" }}>
+      <LineChart
+        dataset={data.map((d) => ({
+          ...d,
+          date: new Date(d.date),
+        }))}
+        series={[{ dataKey: "heartRate", label: "Heart Rate" }]}
+        xAxis={[
+          {
+            dataKey: "date",
+            scaleType: "time",
+            valueFormatter: (date) => date.toLocaleDateString(),
+          },
+        ]}
+      />
+    </div>
   )
 }
